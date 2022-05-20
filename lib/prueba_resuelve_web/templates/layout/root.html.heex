@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html data-theme="aqua" lang="en">
   <head>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -7,22 +7,39 @@
     <%= csrf_meta_tag() %>
     <%= live_title_tag assigns[:page_title] || "PruebaResuelve", suffix: " · Phoenix Framework" %>
     <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/app.css")}/>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.15.0/dist/full.css" rel="stylesheet" type="text/css" />
     <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/app.js")}></script>
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body>
+  <body class="h-screen">
     <header>
-      <section class="container">
-        <nav>
-          <ul>
-            <li><a href="https://hexdocs.pm/phoenix/overview.html">Get Started</a></li>
-            <%= if function_exported?(Routes, :live_dashboard_path, 2) do %>
-              <li><%= link "LiveDashboard", to: Routes.live_dashboard_path(@conn, :home) %></li>
-            <% end %>
-          </ul>
-        </nav>
-        <a href="https://phoenixframework.org/" class="phx-logo">
-          <img src={Routes.static_path(@conn, "/images/phoenix.png")} alt="Phoenix Framework Logo"/>
-        </a>
+      <section class="">
+        <div class="navbar bg-base-100">
+          <div class="flex-1">
+            <a class="btn btn-ghost normal-case text-xl">Resuelve</a>
+          </div>
+          <div class="flex-none">
+            <ul class="menu menu-horizontal p-0 z-50">
+              <li tabindex="0">
+                <a>
+                  Acerca de...
+                  <svg
+                    class="fill-current"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24">
+                      <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/>
+                  </svg>
+                </a>
+                <ul class="p-2 bg-base-100">
+                  <li><a>Github</a></li>
+                  <li><a>Correo</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
       </section>
     </header>
     <%= @inner_content %>
