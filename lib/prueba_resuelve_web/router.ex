@@ -17,7 +17,7 @@ defmodule PruebaResuelveWeb.Router do
   scope "/", PruebaResuelveWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    live "/", IndexLive, :index
   end
 
   # Other scopes may use custom stacks.
