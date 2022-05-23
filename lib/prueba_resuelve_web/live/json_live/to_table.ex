@@ -13,9 +13,8 @@ defmodule PruebaResuelveWeb.JsonLive.ToTable do
   end
 
   def from_json(assigns) do
-    {head, body} = get_head_body(assigns.input_json)
-
     ~H"""
+    <% {head, body} = get_head_body(@json) %>
     <div class="overflow-x-auto overflow-y-auto">
       <table class="table table-compact w-full">
         <thead>

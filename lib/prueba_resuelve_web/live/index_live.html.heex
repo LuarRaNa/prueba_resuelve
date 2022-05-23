@@ -5,7 +5,7 @@
   </div>
   <div class="divider lg:divider-horizontal"> -> </div> 
   <div class="grid flex-grow card rounded-box">
-    <PruebaResuelveWeb.JsonLive.ToTable.from_json input_json={@input_json} id="json#table" />
+    <PruebaResuelveWeb.JsonLive.ToTable.from_json json={@input_json} id="input_json#table" />
   </div>
 </div>
 </section>
@@ -13,7 +13,7 @@
 <div class="flex flex-col w-full h-full lg:flex-row indicator">
     <span class="indicator-item indicator-center indicator-bottom badge badge-primary">Success</span> 
     <div class="grid flex-grow rounded-box">
-      <textarea class="textarea input-bordered input-accent rounded-box" placeholder="Response..." disabled></textarea>
+      <PruebaResuelveWeb.JsonLive.ToTable.from_json json={@result_json} id="result_json#table" />
     </div>
 </div>
 </section>
