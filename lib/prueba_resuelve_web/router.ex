@@ -21,9 +21,11 @@ defmodule PruebaResuelveWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", PruebaResuelveWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", PruebaResuelveWeb do
+    pipe_through :api
+
+    post "/players", PlayerController, :salary
+  end
 
   # Enables LiveDashboard only for development
   #
