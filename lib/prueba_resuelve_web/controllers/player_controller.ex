@@ -7,6 +7,6 @@ defmodule PruebaResuelveWeb.PlayerController do
 
   def salary(conn, %{"jugadores" => jugadores}) do
     jugadores = Payroll.get_salary(jugadores)
-    render(conn, "salary.json", jugadores: jugadores)
+    render(conn, "jugadores.json", jugadores: jugadores)
   end
 end
