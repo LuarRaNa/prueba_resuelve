@@ -14,6 +14,7 @@ defmodule PruebaResuelve.Payroll do
   def get_salary(jugadores, payroll \\ @payroll) do
     {total_goles, total_nivel} = team_goal(jugadores, payroll)
     bono_equipo = total_goles / total_nivel
+    bono_equipo = if bono_equipo > 1, do: 1, else: bono_equipo
 
     fill_payment(jugadores, bono_equipo, payroll)
   end
@@ -34,6 +35,7 @@ defmodule PruebaResuelve.Payroll do
 
   defp salary_plus_bonus(jugador, bono_equipo, payroll) do
     bono_total = jugador["goles"] / payroll[jugador["nivel"]] + bono_equipo
+    bono_total = if bono_total > 2, do: 2, else: bono_total
     sueldo_completo = bono_total / 2 * jugador["bono"] + jugador["sueldo_completo"]
 
     %{jugador | "sueldo_completo" => sueldo_completo}

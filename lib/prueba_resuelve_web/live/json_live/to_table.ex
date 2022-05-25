@@ -15,6 +15,7 @@ defmodule PruebaResuelveWeb.JsonLive.ToTable do
   def from_json(assigns) do
     ~H"""
     <% {head, body} = get_head_body(@json) %>
+    <%= if map_size(@json) != 0 do %>
     <div class="overflow-x-auto overflow-y-auto">
       <table class="table table-compact w-full">
         <thead>
@@ -45,6 +46,7 @@ defmodule PruebaResuelveWeb.JsonLive.ToTable do
         </tfoot>
       </table>
     </div>
+    <% end %>
     """
   end
 end

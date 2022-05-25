@@ -23,7 +23,7 @@ defmodule PruebaResuelveWeb.IndexLive do
 
       {:noreply, assign(socket, :input_json, json)}
     else
-      {:error, _} -> {:noreply, assign(socket, :input_json, %{})}
+      {:error, _} -> {:noreply, socket |> assign(:input_json, %{}) |> assign(:result_json, %{})}
     end
   end
 
