@@ -13,9 +13,10 @@ defmodule PruebaResuelve.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: PruebaResuelve.PubSub},
       # Start the Endpoint (http/https)
-      PruebaResuelveWeb.Endpoint
+      PruebaResuelveWeb.Endpoint,
       # Start a worker by calling: PruebaResuelve.Worker.start_link(arg)
       # {PruebaResuelve.Worker, arg}
+      {Finch, name: PruebaResuelveWebApi}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

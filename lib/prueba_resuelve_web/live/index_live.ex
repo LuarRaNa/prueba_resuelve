@@ -15,9 +15,10 @@ defmodule PruebaResuelveWeb.IndexLive do
   def handle_event("new_json", %{"value" => value}, socket) do
     with {:ok, json} <- Jason.decode(value) do
       pid = self()
+
       Task.async(fn ->
-        Process.sleep(1000)
-        send(pid, {:api_call_done, json})
+        result = PruebaResuelveWeb.ExtApi.ApiCaller.get_json("players", value)
+        send(pid, {:api_call_done, result})
       end)
 
       {:noreply, assign(socket, :input_json, json)}
@@ -27,7 +28,11 @@ defmodule PruebaResuelveWeb.IndexLive do
   end
 
   def handle_info({:api_call_done, result}, socket) do
-    {:noreply, assign(socket, :result_json, result)}
+    with {:ok, json} <- result do
+      {:noreply, assign(socket, :result_json, json)}
+    else
+      {:error, _} -> {:noreply, assign(socket, :result_json, %{})}
+    end
   end
 
   # Evitar que la llamada de retorno de Task.async termine IndexLive.
