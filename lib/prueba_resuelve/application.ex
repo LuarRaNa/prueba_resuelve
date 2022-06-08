@@ -16,7 +16,8 @@ defmodule PruebaResuelve.Application do
       PruebaResuelveWeb.Endpoint,
       # Start a worker by calling: PruebaResuelve.Worker.start_link(arg)
       # {PruebaResuelve.Worker, arg}
-      {Finch, name: PruebaResuelveWebApi}
+      {Finch, name: PruebaResuelveWebApi},
+      {Task.Supervisor, name: PruebaResuelveWeb.TaskSupervisor}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
